@@ -1269,7 +1269,12 @@ def render_search_visualizer_tab(title: str = "Mô phỏng KMP Search") -> None:
         )
 
     apply_col, status_col = st.columns([1, 5])
-    if apply_col.button("Apply", type="primary", key="kmp-viz-apply"):
+    if apply_col.button(
+        "Apply",
+        type="primary",
+        key="kmp-viz-apply",
+        help="Nhập văn bản T và mẫu P, sau đó bấm Apply để tạo số bước và ô ký tự.",
+    ):
         st.session_state["kmp_viz_applied_text"] = raw_text[:500]
         st.session_state["kmp_viz_applied_pattern"] = raw_pattern
         st.session_state["kmp_viz_signature"] = (raw_text[:500], raw_pattern)
@@ -1280,7 +1285,6 @@ def render_search_visualizer_tab(title: str = "Mô phỏng KMP Search") -> None:
 
     if "kmp_viz_applied_text" not in st.session_state or "kmp_viz_applied_pattern" not in st.session_state:
         status_col.caption("Chưa apply dữ liệu.")
-        st.info("Nhập văn bản T và mẫu P, sau đó bấm Apply để tạo số bước và ô ký tự.")
         return
 
     text = st.session_state["kmp_viz_applied_text"]
