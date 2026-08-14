@@ -1,0 +1,336 @@
+{
+  "seed": 20260728,
+  "texts": [
+    {
+      "file": "data/small/random_s26_1000.txt",
+      "n": 1000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "796808f0114da0254559dc0ca2130a8cd7dc97b7a6615a7486bf3b085cef98a5"
+    },
+    {
+      "file": "data/small/random_s2_1000.txt",
+      "n": 1000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "c13def1a87be90d16d704bb70968363092eaaa13218bedcbc44961d77edda9ee"
+    },
+    {
+      "file": "data/small/repetitive_1000.txt",
+      "n": 1000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "bd224a350e0aa49ca9e089f136c4dc8fc22c785afb474b5abe0e94d0e9f60aee"
+    },
+    {
+      "file": "data/small/uniform_1000.txt",
+      "n": 1000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "41edece42d63e8d9bf515a9ba6932e1c20cbc9f5a5d134645adb5db1b9737ea3"
+    },
+    {
+      "file": "data/small/natural_1000.txt",
+      "n": 1000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "d5b4a0a6256594ff6a9d4b3b7b3fd183a872b19281d76139dab15521644e8e53"
+    },
+    {
+      "file": "data/small/random_s26_3000.txt",
+      "n": 3000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "ba38176d2f9de4e97d6130d7fd66644455954f1f5d76e50476ede17b6b6b9541"
+    },
+    {
+      "file": "data/small/random_s2_3000.txt",
+      "n": 3000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "fe2674f800c02716ec984bc668c95b3de86561f86e0f89fb11ccfbdef486e004"
+    },
+    {
+      "file": "data/small/repetitive_3000.txt",
+      "n": 3000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "03a69f0edd5276a9b1978c154d8eb9a4ea16ed8f84cd9fe63c0e09e67e08aec6"
+    },
+    {
+      "file": "data/small/uniform_3000.txt",
+      "n": 3000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "556ac82f23f64d2f41b3fb3b9a171791364021aa95c0af6df9e2b5e1d88c8038"
+    },
+    {
+      "file": "data/small/natural_3000.txt",
+      "n": 3000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "4df168af8e135dbe9d03fef6a3a8725d921407fd79789beccd12bba8f5d9c1f9"
+    },
+    {
+      "file": "data/small/random_s26_10000.txt",
+      "n": 10000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "dc23e2ec34dd7880e33c3ccb2a8c6c342e557e211a06cc63bc1fd00bd3c41ada"
+    },
+    {
+      "file": "data/small/random_s2_10000.txt",
+      "n": 10000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "7bda741e691f3552646b65d9f5ac5392efcf3ea7f4e2381bb08b1c6e2862520a"
+    },
+    {
+      "file": "data/small/repetitive_10000.txt",
+      "n": 10000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "c3c1078e374cc3b1a4d2d4d633910331f4db5beadd5554ec4c70838af854555d"
+    },
+    {
+      "file": "data/small/uniform_10000.txt",
+      "n": 10000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "27dd1f61b867b6a0f6e9d8a41c43231de52107e53ae424de8f847b821db4b711"
+    },
+    {
+      "file": "data/small/natural_10000.txt",
+      "n": 10000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "87a3bf9d7924d97d3c6bcd9a5e3d65390f3caf32d4b22ac87da87dd82a6f6461"
+    },
+    {
+      "file": "data/medium/random_s26_30000.txt",
+      "n": 30000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "a0dce4ddff91a16718e776e736ea8c655a81d944346d0fc7309ea6bdfa17b820"
+    },
+    {
+      "file": "data/medium/random_s2_30000.txt",
+      "n": 30000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "66cf260631fc9deaac3fc9243970a1f478e71ed6a427dab10369e33839fc44c7"
+    },
+    {
+      "file": "data/medium/repetitive_30000.txt",
+      "n": 30000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "a8555597c1d87ca28d4daa6d7f6f01724d222f300e12588a1f3982a19cb0c9ce"
+    },
+    {
+      "file": "data/medium/uniform_30000.txt",
+      "n": 30000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "72d6b9e03a5ff2fb44a3bc3a0e5988dae8bb4c300d5297788bdd72e0ca0a59ec"
+    },
+    {
+      "file": "data/medium/natural_30000.txt",
+      "n": 30000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "e0e5eb78c266a7818ddd43148d25b79b932239711ce08f6094a07884f6734018"
+    },
+    {
+      "file": "data/medium/random_s26_100000.txt",
+      "n": 100000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "ca34e86890fbbb4257b21c6f12ea92f542cdbe8006aa177c54645ecc15efddd2"
+    },
+    {
+      "file": "data/medium/random_s2_100000.txt",
+      "n": 100000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "851f18c17c3f406fcd8911f289c1d8a73a91d8ac715a44c3b179ee477de53bff"
+    },
+    {
+      "file": "data/medium/repetitive_100000.txt",
+      "n": 100000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "643d95042977052bc8001c8b101b00408fa877743828be13365168180fe8b68c"
+    },
+    {
+      "file": "data/medium/uniform_100000.txt",
+      "n": 100000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "6d1cf22d7cc09b085dfc25ee1a1f3ae0265804c607bc2074ad253bcc82fd81ee"
+    },
+    {
+      "file": "data/medium/natural_100000.txt",
+      "n": 100000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "4ebde33aada452b788aadf74b19a42a27c3e99e8ce89ee83fbbe2825cddbaa7f"
+    },
+    {
+      "file": "data/large/random_s26_300000.txt",
+      "n": 300000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "f85d0683d0e50026abec25bbf4c2a0c90dd4c7bf8dc67e2d91e29e9b93eaa964"
+    },
+    {
+      "file": "data/large/random_s2_300000.txt",
+      "n": 300000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "cb74c8699b330a10d616a5057ab3709f4230a6bf35a555e62a9fab4e86c0fa03"
+    },
+    {
+      "file": "data/large/repetitive_300000.txt",
+      "n": 300000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "1d4afcdfc885dca66610d07ace3804ba4a4e87bca308108c05f9a5191e937fa4"
+    },
+    {
+      "file": "data/large/uniform_300000.txt",
+      "n": 300000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "12e1b9b179b29a4f7e5889b185d7ac71bff0ad1f49a7b391d0911b737a0f5381"
+    },
+    {
+      "file": "data/large/natural_300000.txt",
+      "n": 300000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "9ddeb048319d8b2a5a77bd52ed319c707392bd508a19f6c8b517935f139c4194"
+    },
+    {
+      "file": "data/large/random_s26_1000000.txt",
+      "n": 1000000,
+      "kind": "random",
+      "description": "random đều, |Σ|=26",
+      "sha256": "d204e63425a13d6cd8d3891ed3489768accbef3484ce24c3e1880a2974d8aef7"
+    },
+    {
+      "file": "data/large/random_s2_1000000.txt",
+      "n": 1000000,
+      "kind": "random",
+      "description": "random đều, |Σ|=2",
+      "sha256": "7a32092cd41ab5360cecc4792a176523560ba9cb3a69ad503009c8741fec1ec1"
+    },
+    {
+      "file": "data/large/repetitive_1000000.txt",
+      "n": 1000000,
+      "kind": "repetitive",
+      "description": "tuần hoàn 'ab'",
+      "sha256": "88858caf7f79393e6d9efb817fdbc9c96819db0852b47b212f74fc028d06229d"
+    },
+    {
+      "file": "data/large/uniform_1000000.txt",
+      "n": 1000000,
+      "kind": "uniform",
+      "description": "một ký tự 'a' (ca xấu nhất naive)",
+      "sha256": "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0"
+    },
+    {
+      "file": "data/large/natural_1000000.txt",
+      "n": 1000000,
+      "kind": "natural",
+      "description": "giống ngôn ngữ tự nhiên (Zipf)",
+      "sha256": "4279ccc5f44d12a28c44ed4b14fa8ab8a4de63a1e77bcb98502c44669ea0e63e"
+    }
+  ],
+  "dictionaries": [
+    {
+      "file": "data/dictionaries/synthetic_1000.txt",
+      "num_words": 1000,
+      "kind": "synthetic",
+      "description": "âm tiết ghép, NHIỀU tiền tố chung (giống ngôn ngữ tự nhiên)",
+      "sha256": "dcd869c51c38acf28c2aea7356783579b7756576552d9b89d92b5797ba01c805"
+    },
+    {
+      "file": "data/dictionaries/uniform_1000.txt",
+      "num_words": 1000,
+      "kind": "uniform",
+      "description": "random đều dài 8, ÍT tiền tố chung (đối chứng)",
+      "sha256": "9be3e0e3fe8cef400104562b2b947ecfec6c68054494fb55f3cd2905dc45b985"
+    },
+    {
+      "file": "data/dictionaries/synthetic_5000.txt",
+      "num_words": 5000,
+      "kind": "synthetic",
+      "description": "âm tiết ghép, NHIỀU tiền tố chung (giống ngôn ngữ tự nhiên)",
+      "sha256": "8ad71e054fcc05e05e35fdaf97f4f827509659177730e1f50951e4113b4839a5"
+    },
+    {
+      "file": "data/dictionaries/uniform_5000.txt",
+      "num_words": 5000,
+      "kind": "uniform",
+      "description": "random đều dài 8, ÍT tiền tố chung (đối chứng)",
+      "sha256": "ab207c393d81164debfe0289b4c236903aa69bb02b021f409566323eca20c019"
+    },
+    {
+      "file": "data/dictionaries/synthetic_20000.txt",
+      "num_words": 20000,
+      "kind": "synthetic",
+      "description": "âm tiết ghép, NHIỀU tiền tố chung (giống ngôn ngữ tự nhiên)",
+      "sha256": "6167b5c8dda86c6f4546c26a270cde152379d2a55fa33cdbb5c2790c938d5ab8"
+    },
+    {
+      "file": "data/dictionaries/uniform_20000.txt",
+      "num_words": 20000,
+      "kind": "uniform",
+      "description": "random đều dài 8, ÍT tiền tố chung (đối chứng)",
+      "sha256": "ff688b57d8e3af47ac7ed17e61a8b63c838d9161f8b6af32ba6362ca75e8b08c"
+    },
+    {
+      "file": "data/dictionaries/synthetic_100000.txt",
+      "num_words": 100000,
+      "kind": "synthetic",
+      "description": "âm tiết ghép, NHIỀU tiền tố chung (giống ngôn ngữ tự nhiên)",
+      "sha256": "542e4362310f148b498a3ed1686f3102c3b299268f592ca6106ebcb07dc70f8a"
+    },
+    {
+      "file": "data/dictionaries/uniform_100000.txt",
+      "num_words": 100000,
+      "kind": "uniform",
+      "description": "random đều dài 8, ÍT tiền tố chung (đối chứng)",
+      "sha256": "ff6c498a11cdc6b8d1701c1a0bea2b69857b7ed914192bd6f09d920de87a9c68"
+    },
+    {
+      "file": "data/dictionaries/synthetic_500000.txt",
+      "num_words": 500000,
+      "kind": "synthetic",
+      "description": "âm tiết ghép, NHIỀU tiền tố chung (giống ngôn ngữ tự nhiên)",
+      "sha256": "88f75a27249ae7df69a31e173c1c3ff72a3199113a1e607634b6aeadbbb31dfa"
+    },
+    {
+      "file": "data/dictionaries/uniform_500000.txt",
+      "num_words": 500000,
+      "kind": "uniform",
+      "description": "random đều dài 8, ÍT tiền tố chung (đối chứng)",
+      "sha256": "c0b86108642919d83127c67932ac197befddb5a5ead655222ec79767b2ddf192"
+    }
+  ],
+  "patterns": {
+    "file": "data/patterns.json",
+    "sha256": "2156d422dcc040275c1993e6382b9a99c2222abbf136964f8efd8683a820c317"
+  },
+  "demo": [
+    {
+      "file": "data/small/demo_corpus.txt",
+      "sha256": "d6122d528d5c2ab17942706d2b861d292635860f0a90cec5415846b6d41327b6"
+    },
+    {
+      "file": "data/dictionaries/demo_words.txt",
+      "sha256": "95b8ce8629ff75bba13d2f1c7641ddab9ca5e355dd8ec744e6bb6b4c18114a5b"
+    }
+  ]
+}

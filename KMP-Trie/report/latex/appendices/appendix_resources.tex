@@ -1,0 +1,83 @@
+% Phụ lục chính thức của báo cáo LaTeX.
+
+\refstepcounter{chapter}
+\chapter*{PHỤ LỤC A. CHỈ MỤC SẢN PHẨM NỘP KÈM}
+\addcontentsline{toc}{chapter}{PHỤ LỤC A. CHỈ MỤC SẢN PHẨM NỘP KÈM}
+
+\begin{center}
+\captionof{table}{Danh mục sản phẩm và đường dẫn}
+\end{center}
+
+{\footnotesize\singlespacing
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3495}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6211}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Sản phẩm
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Đường dẫn
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Mã nguồn module A & src/kmp/kmp.py, src/kmp/aho\_corasick.py \\
+Mã nguồn module B & src/trie/trie.py \\
+Tầng dùng chung & src/common/ \\
+Ba baseline độc lập & tests/baseline.py \\
+Test cơ bản và biên & tests/unit/ --- 236 test \\
+Test đối kháng & tests/adversarial/ --- 18 test \\
+Test ngẫu nhiên đối chiếu & tests/random/ --- 22 test \\
+Sinh dữ liệu, seed cố định & scripts/gen\_data.py, data/MANIFEST.json \\
+Chạy thực nghiệm & scripts/run\_benchmark.py \\
+Vẽ biểu đồ & scripts/plot\_results.py \\
+Bảng kết quả & results/benchmarks/*.csv \\
+Môi trường chạy & results/benchmarks/environment.json \\
+Biểu đồ & results/figures/ --- 7 hình \\
+Demo dòng lệnh & demo/cli/\_\_main\_\_.py \\
+Demo web & demo/web/\_\_main\_\_.py, demo/web/index.html \\
+Hướng dẫn chạy lại & README.md \\
+\end{longtable}
+}
+
+\clearpage
+\refstepcounter{chapter}
+\chapter*{PHỤ LỤC B. HƯỚNG DẪN CHẠY LẠI KẾT QUẢ}
+\addcontentsline{toc}{chapter}{PHỤ LỤC B. HƯỚNG DẪN CHẠY LẠI KẾT QUẢ}
+
+Toàn bộ số liệu trong Chương 6 có thể sinh lại bằng các lệnh dưới đây,
+chạy từ thư mục gốc của đồ án. Mọi đường dẫn đều tương đối nên không phụ
+thuộc máy cụ thể.
+
+\begin{quote}
+\# 1. Kiểm thử --- kỳ vọng: 276 passed
+
+python -m pytest tests/ -q
+
+python -m pytest -\/-doctest-modules src/ tests/baseline.py -q
+
+\# 2. Sinh dữ liệu (seed mặc định 20260728)
+
+python scripts/gen\_data.py \# đầy đủ, khoảng 20 MB
+
+python scripts/gen\_data.py -\/-quick \# bộ nhỏ để thử nhanh
+
+\# 3. Chạy thực nghiệm và vẽ biểu đồ
+
+python scripts/run\_benchmark.py -\/-repeat 7
+
+python scripts/plot\_results.py
+
+\# 4. Demo
+
+python -m demo.cli
+
+python -m demo.web \# rồi mở http://localhost:8000
+\end{quote}
+
+Tôi đã kiểm tra tính tái lập bằng cách sao chép kho mã sang một thư mục
+sạch, xóa toàn bộ thư mục data và results, rồi chạy lại đúng các lệnh
+trên. Bộ test vẫn cho 276 passed, và dữ liệu sinh ra có mã băm SHA-256 trùng
+khớp với bản gốc, xác nhận rằng seed cố định thực sự cho kết quả tái lập
+được.

@@ -1,0 +1,4 @@
+experiment,N,alphabet_size,dict_nodes,array_nodes,array_slots,slots_per_node,dict_peak_mem_bytes,array_peak_mem_bytes,array_over_dict
+E4_storage_tradeoff,1000,26,3074,3074,79924,26,630152,964120,1.53
+E4_storage_tradeoff,5000,26,15486,15486,402636,26,3231416,4869688,1.51
+E4_storage_tradeoff,20000,26,61628,61628,1602328,26,12897568,19397184,1.5

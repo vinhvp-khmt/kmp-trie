@@ -1,0 +1,33 @@
+% ================= TÓM TẮT =================
+\newpage
+\thispagestyle{plain}
+
+\begin{center}
+    {\bfseries\Large TÓM TẮT}
+\end{center}
+
+\vspace{1cm}
+
+Chuyên đề giải quyết hai bài toán xử lý chuỗi có cấu trúc khác nhau: tìm mọi vị trí xuất hiện
+của một mẫu trong văn bản và gợi ý các từ có chung tiền tố trong một từ điển. Bài toán thứ nhất
+được giải bằng thuật toán Knuth--Morris--Pratt; bài toán thứ hai sử dụng cấu trúc dữ liệu Trie.
+
+Phần cài đặt gồm hai mô-đun độc lập, tương thích Python 3.10+ và chỉ dùng thư viện chuẩn.
+Mô-đun KMP công khai prefix function và trả về mọi vị trí khớp, kể cả các lần xuất hiện chồng
+lấn. Mô-đun Trie hỗ trợ chèn, tìm chính xác, truy vấn tiền tố và autocomplete có giới hạn số
+kết quả. Phần mở rộng cài đặt thêm thuật toán Aho--Corasick cho bài toán nhiều mẫu.
+
+Tính đúng đắn được lập luận bằng quy nạp và bất biến vòng lặp. Bộ kiểm thử gồm 276 test tự động
+và 10 doctest, có baseline độc lập, test biên, test đối kháng và đối chiếu ngẫu nhiên với seed
+cố định. Năm thí nghiệm được chạy trên dữ liệu từ \(10^3\) đến \(10^6\) ký tự và tới
+\(5\cdot10^5\) từ.
+
+Kết quả cho thấy số phép so sánh của KMP trên đầu vào đối kháng đạt tối đa \(1{,}9999n\), sát
+chặn \(2n\). Với danh sách đã sắp gồm 500.000 từ, Trie nhanh hơn baseline quét tuyến tính
+1.062 lần trong đúng cấu hình đo. Exact search chỉ duyệt từ 6 đến 10 nút, bằng độ dài từ truy
+vấn. Kết quả bộ nhớ đồng thời cho thấy lợi ích của Trie phụ thuộc mức chia sẻ tiền tố và chi
+tiết cài đặt.
+
+\vspace{0.5cm}
+\noindent\textbf{Từ khoá:} KMP, prefix function, Trie, autocomplete, Aho--Corasick,
+phân tích khấu hao, kiểm thử đối kháng.

@@ -1,0 +1,10 @@
+experiment,N,probe_prefix,subtree_hits,k,returned,truncated,nodes_visited,nodes_per_result,median_ns,repeat
+E4_early_stop,20000,n,2513,1,1,True,6,6.0,1958,7
+E4_early_stop,20000,n,2513,5,5,True,16,3.2,5125,7
+E4_early_stop,20000,n,2513,10,10,True,27,2.7,9083,7
+E4_early_stop,20000,n,2513,20,20,True,63,3.15,23875,7
+E4_early_stop,20000,n,2513,50,50,True,160,3.2,51542,7
+E4_early_stop,20000,n,2513,100,100,True,312,3.12,99875,7
+E4_early_stop,20000,n,2513,500,500,True,1487,2.97,488000,7
+E4_early_stop,20000,n,2513,1000,1000,True,3003,3.0,978250,7
+E4_early_stop,20000,n,2513,2513,2513,False,7596,3.02,2471833,7

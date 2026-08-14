@@ -1,0 +1,50 @@
+% ================= LỜI CAM ĐOAN =================
+\newpage
+\thispagestyle{plain}
+
+\begin{center}
+    {\bfseries\Large LỜI CAM ĐOAN}
+\end{center}
+
+\vspace{1cm}
+
+Tôi xin cam đoan báo cáo cá nhân với đề tài
+``\projecttitle''
+là kết quả nghiên cứu và thực hiện mà tôi chịu trách nhiệm trong chuyên đề.
+
+Tôi đã đọc lại, chỉnh sửa, chạy đối chiếu độc lập và chịu trách nhiệm về toàn bộ
+mã nguồn, kiểm thử và tài liệu trong phiên bản nộp. Các tài liệu, công trình
+nghiên cứu, dữ liệu và
+nguồn tham khảo được sử dụng đều được trích dẫn và ghi rõ trong phần tài liệu tham khảo.
+
+Các số liệu thực nghiệm được sinh từ chương trình trong kho mã, trên môi trường ghi trong báo
+cáo, và có thể tái lập bằng các lệnh trong README. Tôi chịu trách nhiệm hoàn toàn về tính chính
+xác của mọi phát biểu, chứng minh và số liệu trong báo cáo.
+
+\vspace{1.5cm}
+
+\begin{flushright}
+    \placefulldate
+\end{flushright}
+
+\vspace{0.3cm}
+
+\begin{flushright}
+    \begin{minipage}{8.5cm}
+        \centering
+        \textbf{Học viên thực hiện}\\
+        \textit{(Ký và ghi rõ họ tên)}
+
+        % Bật chữ ký: đặt \showsignaturetrue trong config/metadata.tex
+        % và để tệp ảnh chữ ký tại figures/chuky.png
+        \ifshowsignature
+            \IfFileExists{figures/chuky.png}
+                {\includegraphics[width=0.5\textwidth]{figures/chuky.png}}
+                {\vspace{2cm}}
+        \else
+            \vspace{2cm}
+        \fi
+
+        \textbf{\studentname}
+    \end{minipage}
+\end{flushright}

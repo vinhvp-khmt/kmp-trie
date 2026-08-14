@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactive Text Search &amp; Autocomplete — Chuyên đề 10</title>
+<style>
+  :root {
+    --bg: #10131a; --panel: #171b24; --panel2: #1e2330; --line: #2a3040;
+    --fg: #e6e9ef; --dim: #8b93a7; --accent: #6ea8fe; --accent2: #7ee081;
+    --hit: #ffd166; --warn: #ff8f6b; --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 18px 24px; border-bottom: 1px solid var(--line);
+           background: var(--panel); }
+  h1 { margin: 0 0 4px; font-size: 17px; letter-spacing: .2px; }
+  .sub { color: var(--dim); font-size: 13px; }
+  .wrap { display: grid; grid-template-columns: 340px 1fr; gap: 0;
+          min-height: calc(100vh - 74px); }
+  .left { border-right: 1px solid var(--line); background: var(--panel);
+          padding: 18px; }
+  .right { padding: 18px 24px; overflow: auto; }
+  .module { font-size: 11px; text-transform: uppercase; letter-spacing: .8px;
+            color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+  .module.b { color: var(--accent2); }
+  label { display: block; font-size: 12px; color: var(--dim);
+          margin: 14px 0 5px; }
+  input[type=text], input[type=number] {
+    width: 100%; padding: 9px 11px; background: var(--panel2); color: var(--fg);
+    border: 1px solid var(--line); border-radius: 7px; font-family: var(--mono);
+    font-size: 14px; }
+  input:focus { outline: none; border-color: var(--accent); }
+  .row { display: flex; gap: 8px; align-items: flex-end; }
+  .row > :first-child { flex: 1; }
+  .row > :last-child { width: 78px; flex: none; }
+  ul.sug { list-style: none; margin: 8px 0 0; padding: 0;
+           max-height: 230px; overflow: auto; }
+  ul.sug li { padding: 6px 9px; border-radius: 6px; cursor: pointer;
+              font-family: var(--mono); font-size: 13px; }
+  ul.sug li:hover { background: var(--panel2); }
+  ul.sug li b { color: var(--accent2); }
+  ul.sug li .pre { color: var(--dim); }
+  .meta { font-family: var(--mono); font-size: 11.5px; color: var(--dim);
+          margin-top: 8px; line-height: 1.7; }
+  .card { background: var(--panel); border: 1px solid var(--line);
+          border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  .card h3 { margin: 0 0 10px; font-size: 13px; color: var(--dim);
+             text-transform: uppercase; letter-spacing: .7px; font-weight: 600; }
+  .kpi { display: flex; flex-wrap: wrap; gap: 22px; }
+  .kpi div { min-width: 96px; }
+  .kpi .v { font-size: 21px; font-weight: 650; font-family: var(--mono); }
+  .kpi .l { font-size: 11px; color: var(--dim); }
+  .ok { color: var(--accent2); } .bad { color: var(--warn); }
+  .snip { font-family: var(--mono); font-size: 12.5px; padding: 6px 0;
+          border-bottom: 1px solid var(--line); white-space: pre-wrap;
+          word-break: break-all; }
+  .snip:last-child { border: none; }
+  .snip .pos { color: var(--dim); margin-right: 10px; }
+  mark { background: var(--hit); color: #12151c; border-radius: 3px;
+         padding: 0 2px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-family: var(--mono);
+          font-size: 12.5px; }
+  th, td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--dim); font-weight: 600; font-size: 11px;
+       text-transform: uppercase; }
+  .lps { overflow-x: auto; }
+  .empty { color: var(--dim); font-style: italic; padding: 8px 0; }
+  .err { color: var(--warn); font-family: var(--mono); font-size: 13px; }
+  .hint { font-size: 11.5px; color: var(--dim); margin-top: 6px; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 20px;
+         background: var(--panel2); border: 1px solid var(--line);
+         font-size: 11px; font-family: var(--mono); margin-right: 5px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Interactive Text Search &amp; Autocomplete System</h1>
+  <div class="sub">Chuyên đề 10 — Xử lý chuỗi với KMP và cấu trúc Trie ·
+    <span id="hdr-stats">đang tải…</span></div>
+</header>
+
+<div class="wrap">
+  <div class="left">
+    <div class="module b">Mô-đun B · Trie</div>
+    <label for="prefix">Tiền tố (autocomplete)</label>
+    <div class="row">
+      <input type="text" id="prefix" placeholder="gõ tiền tố…" autocomplete="off">
+      <div>
+        <label for="k" style="margin-top:0">k</label>
+        <input type="number" id="k" value="8" min="0" max="200">
+      </div>
+    </div>
+    <ul class="sug" id="sug"></ul>
+    <div class="meta" id="sug-meta"></div>
+
+    <div style="height:22px"></div>
+    <div class="module">Mô-đun A · KMP</div>
+    <label for="pattern">Mẫu cần tìm</label>
+    <input type="text" id="pattern" placeholder="mẫu P…" autocomplete="off">
+    <div class="hint">Nhấn một gợi ý ở trên để đưa vào ô này.</div>
+
+    <div style="height:22px"></div>
+    <div class="module" style="color:var(--hit)">Mở rộng · Aho–Corasick</div>
+    <label for="multi">Nhiều mẫu, cách nhau bởi dấu phẩy</label>
+    <input type="text" id="multi" placeholder="tim, kmp, trie" autocomplete="off">
+  </div>
+
+  <div class="right" id="out">
+    <div class="card"><div class="empty">Nhập tiền tố hoặc mẫu ở cột bên trái.</div></div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nf = n => Number(n).toLocaleString('vi-VN');
+const debounce = (fn, ms) => { let t; return (...a) => {
+  clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+async function get(url) {
+  const r = await fetch(url);
+  return r.json();
+}
+
+// ---------- header ----------
+get('/api/stats').then(s => {
+  $('hdr-stats').textContent =
+    `văn bản ${nf(s.text.n)} ký tự · từ điển ${nf(s.trie.num_words)} từ / ` +
+    `${nf(s.trie.num_nodes)} nút · Σ = ${s.trie.alphabet} (|Σ| = ${s.trie.alphabet_size})`;
+});
+
+// ---------- Mô-đun B: autocomplete ----------
+const doSuggest = debounce(async () => {
+  const prefix = $('prefix').value;
+  const k = Math.max(0, parseInt($('k').value || '8', 10));
+  const d = await get(`/api/suggest?prefix=${encodeURIComponent(prefix)}&k=${k}`);
+  const ul = $('sug');
+  ul.innerHTML = '';
+  if (d.error) { $('sug-meta').innerHTML = `<span class="err">${esc(d.error)}</span>`; return; }
+  if (!d.suggestions.length) {
+    ul.innerHTML = `<li class="empty">không có từ nào có tiền tố này</li>`;
+  } else {
+    for (const s of d.suggestions) {
+      const li = document.createElement('li');
+      li.innerHTML = `<span class="pre">${esc(prefix)}</span><b>${esc(s.slice(prefix.length))}</b>`;
+      li.onclick = () => { $('pattern').value = s; doSearch(); };
+      ul.appendChild(li);
+    }
+  }
+  $('sug-meta').innerHTML =
+    `<span class="tag">${d.module}</span><br>` +
+    `${d.suggestions.length} / ${nf(d.total_with_prefix)} kết quả` +
+    (d.truncated ? ' <span class="bad">(bị cắt)</span>' : ' <span class="ok">(đầy đủ)</span>') +
+    `<br>nút đã duyệt: <b>${nf(d.nodes_visited)}</b><br>${esc(d.complexity)}`;
+}, 110);
+
+$('prefix').addEventListener('input', doSuggest);
+$('k').addEventListener('input', doSuggest);
+
+// ---------- Mô-đun A: KMP ----------
+async function doSearch() {
+  const pattern = $('pattern').value;
+  if (!pattern) { render(''); return; }
+  const d = await get(`/api/search?pattern=${encodeURIComponent(pattern)}`);
+  if (d.error) { render(`<div class="card"><div class="err">${esc(d.error)}</div></div>`); return; }
+
+  const ratio = d.comparisons_per_n;
+  const within = d.char_comparisons <= d.bound_2n;
+
+  let html = `<div class="card">
+    <h3>Mô-đun A — KMP · kết quả tìm kiếm</h3>
+    <div class="kpi">
+      <div><div class="v">${nf(d.count)}</div><div class="l">lần khớp</div></div>
+      <div><div class="v">${nf(d.n)}</div><div class="l">n = |T|</div></div>
+      <div><div class="v">${nf(d.m)}</div><div class="l">m = |P|</div></div>
+      <div><div class="v">${nf(d.char_comparisons)}</div><div class="l">phép so sánh</div></div>
+      <div><div class="v ${within ? 'ok' : 'bad'}">${ratio}·n</div>
+           <div class="l">so với chặn 2n</div></div>
+    </div>
+    <div class="meta">${esc(d.complexity)} ·
+      ${within ? '<span class="ok">✓ trong chặn khấu hao 2n</span>'
+               : '<span class="bad">✗ vượt chặn</span>'}</div>
+  </div>`;
+
+  html += `<div class="card">
+    <h3>Hàm tiền tố π (LPS) của mẫu</h3>
+    <div class="lps"><table><tr><th>i</th>${
+      d.lps.map((_, i) => `<td>${i}</td>`).join('')}</tr>
+      <tr><th>P[i]</th>${[...pattern].map(c => `<td>${esc(c)}</td>`).join('')}</tr>
+      <tr><th>π[i]</th>${d.lps.map(v => `<td><b>${v}</b></td>`).join('')}</tr>
+    </table></div>
+    <div class="meta">dãy biên của toàn mẫu: [${d.borders.join(', ')}]
+      — KMP lùi theo đúng dãy này khi mismatch</div>
+  </div>`;
+
+  if (d.snippets.length) {
+    html += `<div class="card"><h3>Vị trí xuất hiện${
+      d.truncated ? ` (hiển thị ${d.snippets.length} đầu tiên)` : ''}</h3>`;
+    for (const s of d.snippets) {
+      html += `<div class="snip"><span class="pos">[${String(s.pos).padStart(7)}]</span>` +
+        (s.elided_left ? '…' : '') + esc(s.before) +
+        `<mark>${esc(s.hit)}</mark>` + esc(s.after) +
+        (s.elided_right ? '…' : '') + `</div>`;
+    }
+    html += `</div>`;
+  } else {
+    html += `<div class="card"><div class="empty">Không tìm thấy mẫu trong văn bản.</div></div>`;
+  }
+  render(html);
+}
+$('pattern').addEventListener('input', debounce(doSearch, 140));
+
+// ---------- Mở rộng: Aho-Corasick ----------
+const doMulti = debounce(async () => {
+  const raw = $('multi').value.trim();
+  if (!raw) return;
+  const d = await get(`/api/multi?patterns=${encodeURIComponent(raw)}`);
+  if (d.error) { render(`<div class="card"><div class="err">${esc(d.error)}</div></div>`); return; }
+
+  let html = `<div class="card">
+    <h3>Mở rộng — Aho–Corasick · ${d.patterns.length} mẫu, MỘT lượt duyệt</h3>
+    <div class="kpi">
+      <div><div class="v">${nf(d.total_matches)}</div><div class="l">tổng lần khớp</div></div>
+      <div><div class="v">${nf(d.num_nodes)}</div><div class="l">nút trie</div></div>
+      <div><div class="v">${nf(d.ac_comparisons)}</div><div class="l">so sánh (AC)</div></div>
+      <div><div class="v">${nf(d.kmp_repeated_comparisons)}</div>
+           <div class="l">so sánh (KMP lặp)</div></div>
+      <div><div class="v ok">${d.ratio}×</div><div class="l">tiết kiệm</div></div>
+    </div>
+    <table style="margin-top:12px"><tr><th>mẫu</th><th>số lần</th></tr>${
+      Object.entries(d.counts).map(([p, n]) =>
+        `<tr><td>${esc(p)}</td><td class="${n ? 'ok' : ''}">${nf(n)}</td></tr>`).join('')}
+    </table>
+  </div>`;
+  render(html);
+}, 200);
+$('multi').addEventListener('input', doMulti);
+
+function render(html) {
+  $('out').innerHTML = html ||
+    `<div class="card"><div class="empty">Nhập tiền tố hoặc mẫu ở cột bên trái.</div></div>`;
+}
+</script>
+</body>
+</html>

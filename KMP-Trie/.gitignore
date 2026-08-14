@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+node_modules/
+*.tmp
+*.log
+*.DS_Store
+.~lock.*#
+~$*.pptx
+
+# LaTeX build products (PDF nộp nằm ở report/, không nằm cạnh main.tex)
+report/latex/*.aux
+report/latex/*.bbl
+report/latex/*.blg
+report/latex/*.fdb_latexmk
+report/latex/*.fls
+report/latex/*.lof
+report/latex/*.lot
+report/latex/*.out
+report/latex/*.toc
+report/latex/*.xdv
+report/latex/main.pdf
+
+docs/usage-log.md

@@ -1,0 +1,5 @@
+thuat toan tim kiem chuoi kmp va cau truc trie
+kmp tim moi vi tri xuat hien cua mau trong van ban
+trie luu tu dien va ho tro autocomplete theo tien to
+aaaa aa aaa aaaa
+abab ababab abababab

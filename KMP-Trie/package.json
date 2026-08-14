@@ -1,0 +1,12 @@
+{
+  "name": "kmp-trie-research-artifact",
+  "private": true,
+  "scripts": {
+    "build:report": "bash report/latex/build/make.sh",
+    "build:slides": "bash slides/build/make.sh",
+    "build": "npm run build:report && npm run build:slides"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
