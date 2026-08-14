@@ -16,8 +16,23 @@ from PIL import Image
 
 APP_DIR = Path(__file__).resolve().parent
 DEFAULT_KMP_REPO = Path("/Users/Vinh/Documents/ChatGPT/Thuật toán-KMP & Trie/KMP-Trie")
-KMP_REPO = Path(os.environ.get("KMP_TRIE_REPO", DEFAULT_KMP_REPO)).expanduser().resolve()
-if KMP_REPO.exists() and str(KMP_REPO) not in sys.path:
+KMP_REPO_CANDIDATES = [
+    Path(os.environ["KMP_TRIE_REPO"]).expanduser()
+    if os.environ.get("KMP_TRIE_REPO")
+    else None,
+    APP_DIR / "KMP-Trie",
+    APP_DIR.parent / "KMP-Trie",
+    DEFAULT_KMP_REPO,
+]
+KMP_REPO = next(
+    (
+        candidate.resolve()
+        for candidate in KMP_REPO_CANDIDATES
+        if candidate is not None and (candidate / "src").is_dir()
+    ),
+    DEFAULT_KMP_REPO.resolve(),
+)
+if (KMP_REPO / "src").is_dir() and str(KMP_REPO) not in sys.path:
     sys.path.insert(0, str(KMP_REPO))
 
 try:
