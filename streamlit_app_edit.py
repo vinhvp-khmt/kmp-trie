@@ -332,7 +332,7 @@ def render_report_outline() -> None:
     st.dataframe(
         pd.DataFrame(
             [
-                {"Tab": "Giới thiệu", "Nội dung báo cáo": "Chương 1 + Chương 5", "Vai trò": "Bài toán, module, kiến trúc source, xử lý đầu vào"},
+                {"Tab": "Giới thiệu", "Nội dung báo cáo": "Chương 1 + Chương 5", "Vai trò": "Bài toán, module, kiến trúc source"},
                 {"Tab": "Cơ sở lý thuyết", "Nội dung báo cáo": "Chương 2", "Vai trò": "Chuỗi, border, LPS, bất biến KMP và Trie"},
                 {"Tab": "Thuật toán & chứng minh", "Nội dung báo cáo": "Chương 3 + Chương 4", "Vai trò": "Mã giả, chứng minh, độ phức tạp"},
                 {"Tab": "Kiểm thử & thực nghiệm", "Nội dung báo cáo": "Chương 6", "Vai trò": "Baseline, bộ dữ liệu, E1-E5"},
@@ -347,10 +347,11 @@ def render_report_outline() -> None:
 
 def render_overview_tab() -> None:
     st.subheader("Tên đề tài")
-    st.write(
-        "**KMP và Trie: cài đặt, kiểm thử và thực nghiệm.** "
-        "Đề tài tập trung vào hai kỹ thuật xử lý chuỗi phổ biến: tìm mẫu tuyến tính bằng KMP "
-        "và lưu/truy vấn từ theo tiền tố bằng Trie."
+    st.markdown(
+        """
+**KMP và Trie: cài đặt, kiểm thử và thực nghiệm.**  
+Đề tài tập trung vào hai kỹ thuật xử lý chuỗi phổ biến: tìm mẫu tuyến tính bằng KMP và lưu/truy vấn từ theo tiền tố bằng Trie.
+"""
     )
 
     st.subheader("Module chính")
@@ -402,22 +403,8 @@ def render_overview_tab() -> None:
 ├── scripts/                    # sinh dữ liệu, benchmark, vẽ biểu đồ
 ├── results/
 │   ├── benchmarks/             # CSV số liệu E1-E5
-│   └── figures/                # hình từ benchmark
-├── demo/
-│   ├── cli/                    # demo dòng lệnh
-│   └── web/                    # demo web chuẩn
-└── report/                     # PDF và source LaTeX""",
+│   └── figures/                # hình từ benchmark""",
         language="text",
-    )
-
-    st.subheader("Xử lý đầu vào không hợp lệ")
-    st.markdown(
-        """
-- KMP từ chối mẫu rỗng vì mẫu rỗng khớp ở mọi vị trí và không mang thông tin.
-- Trie `insert` kiểm tra từ rỗng và ký tự ngoài bảng chữ cái trước khi sửa cây.
-- Truy vấn `search`/`autocomplete` với ký tự ngoài bảng chữ cái trả kết quả rỗng.
-- Benchmark ghi seed, manifest SHA-256 và thông tin môi trường để kết quả có thể tái lập.
-"""
     )
 
     render_search_visualizer_tab("Mô phỏng lý thuyết KMP")
