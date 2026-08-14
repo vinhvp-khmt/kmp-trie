@@ -545,24 +545,6 @@ def render_theory_tab() -> None:
             width="stretch",
         )
 
-    st.subheader("Giả thiết và quy ước sử dụng")
-    st.dataframe(
-        pd.DataFrame(
-            [
-                {"Nội dung": "Hai ký tự có thể kiểm tra bằng phép bằng", "Phạm vi": "KMP", "Ý nghĩa": "KMP không yêu cầu ký tự có thứ tự"},
-                {"Nội dung": "Mỗi phép so sánh ký tự là O(1)", "Phạm vi": "Phân tích KMP", "Ý nghĩa": "Dùng để suy ra thời gian O(n+m)"},
-                {"Nội dung": "Σ hữu hạn", "Phạm vi": "Không bắt buộc với KMP", "Ý nghĩa": "KMP không tạo bảng chuyển theo toàn bộ tập ký tự"},
-                {"Nội dung": "Mẫu rỗng bị từ chối", "Phạm vi": "Quy ước chương trình", "Ý nghĩa": "`kmp_search` yêu cầu m ≥ 1"},
-                {"Nội dung": "Trie dùng Alphabet cấu hình trước", "Phạm vi": "Quy ước hệ thống", "Ý nghĩa": "`insert` kiểm tra ký tự trước khi thêm vào cây"},
-                {"Nội dung": "Từ điển chuẩn hóa Unicode trước khi thêm", "Phạm vi": "Tiền xử lý dữ liệu", "Ý nghĩa": "Tránh tách nhánh do khác biểu diễn ký tự"},
-                {"Nội dung": "Không có delete trong Trie chính", "Phạm vi": "Phạm vi chuyên đề", "Ý nghĩa": "Nếu thêm delete phải cập nhật word_count và prefix_count"},
-            ]
-        ),
-        hide_index=True,
-        width="stretch",
-    )
-
-
 def render_algorithm_tab() -> None:
     kmp_tab, trie_tab, complexity_tab = st.tabs(["KMP", "Trie", "Độ phức tạp"])
 
@@ -673,21 +655,6 @@ def render_algorithm_tab() -> None:
                 hide_index=True,
                 width="stretch",
             )
-
-        st.subheader("Các định lý trong chứng minh KMP")
-        st.dataframe(
-            pd.DataFrame(
-                [
-                    {"Định lý": "3.1", "Nội dung": "BUILD_LPS tính đúng giá trị LPS tại mọi vị trí của mẫu P."},
-                    {"Định lý": "3.2", "Nội dung": "Trước khi xử lý T[j], i là độ dài phần đầu mẫu đang trùng với phần cuối văn bản đã xử lý."},
-                    {"Định lý": "3.3", "Nội dung": "KMP không trả về vị trí sai: khi i = m thì T[j-m+1..j] = P."},
-                    {"Định lý": "3.4", "Nội dung": "KMP không bỏ sót kết quả vì các lần lùi bằng LPS chỉ bỏ qua trường hợp chắc chắn không thể khớp."},
-                    {"Định lý": "3.5", "Nội dung": "Phép gán i <- lps[m-1] giúp phát hiện các lần xuất hiện chồng lấn."},
-                ]
-            ),
-            hide_index=True,
-            width="stretch",
-        )
 
     with trie_tab:
         st.subheader("TRIE_INSERT")
@@ -809,18 +776,6 @@ def render_algorithm_tab() -> None:
                 hide_index=True,
                 width="stretch",
             )
-
-        st.subheader("Các định lý trong chứng minh Trie")
-        st.dataframe(
-            pd.DataFrame(
-                [
-                    {"Định lý": "3.6", "Nội dung": "Sau mỗi lần TRIE_INSERT, các bất biến I1-I4 vẫn được bảo toàn."},
-                    {"Định lý": "3.7", "Nội dung": "TRIE_AUTOCOMPLETE trả về tối đa k từ có prefix q theo thứ tự từ điển; truncated phản ánh còn kết quả hay không."},
-                ]
-            ),
-            hide_index=True,
-            width="stretch",
-        )
 
     with complexity_tab:
         st.subheader("KMP")
@@ -979,19 +934,6 @@ def render_conclusion_tab() -> None:
         width="stretch",
     )
 
-    st.subheader("Ứng dụng và giao diện")
-    st.dataframe(
-        pd.DataFrame(
-            [
-                {"Giao diện": "CLI", "Lệnh": "python -m demo.cli --text ... --search ... --json", "Mục đích": "Tái lập kết quả và tích hợp script"},
-                {"Giao diện": "Web chuẩn", "Lệnh": "python -m demo.web", "Mục đích": "Minh họa KMP/Trie không cần framework ngoài"},
-                {"Giao diện": "Streamlit", "Lệnh": "streamlit run app/streamlit_app.py", "Mục đích": "Trình bày báo cáo và demo tương tác"},
-            ]
-        ),
-        hide_index=True,
-        width="stretch",
-    )
-
     st.subheader("Giới hạn và hướng mở rộng")
     st.markdown(
         """
@@ -1002,16 +944,6 @@ def render_conclusion_tab() -> None:
 - Aho-Corasick là phần mở rộng đã cài để tìm nhiều mẫu đồng thời.
 """
     )
-
-    st.subheader("Bài học chính")
-    st.markdown(
-        """
-KMP cho thấy sức mạnh của việc tái sử dụng thông tin biên trong một mẫu.
-Trie cho thấy cách chuyển chi phí từ số lượng từ sang độ dài truy vấn bằng cấu trúc tiền tố.
-Hai ý tưởng gặp nhau tự nhiên ở Aho-Corasick khi bài toán chuyển từ một mẫu sang nhiều mẫu.
-"""
-    )
-
 
 def kmp_trace(text: str, pattern: str) -> list[dict]:
     if not pattern:
@@ -1462,7 +1394,6 @@ def render_aho_demo() -> None:
 
 def render_demo_tab() -> None:
     st.subheader("Demo tương tác từ source KMP-Trie")
-    st.caption(f"Source đang dùng: {KMP_REPO}")
     demo_default = set_default_tab_from_route("demo_tab", DEMO_TAB_LABELS, DEMO_ROUTE_TABS, "demo", "kmp")
     kmp_tab, trie_tab, aho_tab = st.tabs(
         DEMO_TAB_LABELS,
